@@ -1,0 +1,54 @@
+language: java
+
+jdk:
+  - oraclejdk7
+  - oraclejdk8
+
+before_install:
+  - chmod +x ./.travis/maven-build.sh
+  - chmod +x ./.travis/call-creation.sh
+  - mvn clean
+
+install:
+  - sudo apt-get update && sudo apt-get --assume-yes install zip unzip
+
+script: "./.travis/maven-build.sh"
+
+after_deploy: "./.travis/call-creation.sh"
+
+notifications:
+  email: false
+  slack:
+    secure: ElYiQdTUjMPixm/934/xyQAerZ5/Us5yw3YB4/5efVr1vyPdsJ14iAAYnWtPBVbPzOw2eKmD3t5enElZXAWAP2ckqS+OiD2BrZNnAJfPgl1c5ejcDR79SlluBQ220ZNOyYAzNLGHnaz2tS92bdtclfzv3q7Va5++gi/mu+VbfD8Bw+ncnP/RHphASyqRc4ulRwg0xWQ/gCyDlojKh5svexrrLvgGT5Ks42pJAMaZXAH/ztkcl1YiXsmpq7cSixQPXDbMvQvzjsE69BkZtwr8xr6gs4hlvWJibIiM+B8mSAy+yv5B1OWeFyIzYelHB6gRqoMCheDv+Mx0rwUKOAWsGiezwAWslyfCzk25Zv4qAuZqm7LqL1nL6/yMAgjrbOkLmQrctcwLorZ8G+Lb9Vu56qQ7rwxRoWF0rDMniBjrlxFzGaFWhCTtR/NA1mJDfUprHUbaRTEL5VOdidTRdh8Z1/UPg3l2qmBcAGTHv1Ir/pd7DJnvcuJPI8J0MAyz1NurRiSyoH8YAypjPtVexnI6aOjJZFn03isA/skC0U0t0xCJ4w0Obg0FMHPj4DYIJX5DWgDhrLvnmHoEYayy/4+q5dLN7rJ1aNr6AFOu8kUEW6utmTi/UO2R4PHkRiHdQXj27Y2+gsoDf4lqnVCOEt7hnYRsgESff32+fMfUKLhJoYk=
+  webhooks:
+    on_success: always
+    on_failure: always
+    on_start: never
+
+env:
+  global:
+    - PROVIDER_VERSION=0.1
+
+cache:
+  directories:
+    - ".autoconf"
+    - "$HOME/.m2"
+
+deploy:
+  - provider: s3
+    access_key_id: AKIAIXJLGEGYOUYYAZKQ
+    secret_access_key:
+      secure: cXq9KcKBgJOnUZpSeJLIpOmHGAYdLVF5I50yOCQB7LlldkIhqnmQItwRpC3NEbN/5w74WDDWNwdUm1nfNFhN3KIjGLLlU8Xk3ZhlfilgoTB6EunkqB4ZZE3XT052+/LIuYOv9oAladEDlfFMF1wOLXN6iuy3WIa5PYqW1u5lgUKj0PyZ16YqzfsJuVFhj9Qj2V48GBH+mAg+aan4VcZs3kZawonmt23zLjyccEUCYJ9Gwo0W+m7Jx/EWmpX6N0zcSn8d1bw613u/vJaDv2isag1KbpGhdKmAAno00oOJwM80tRhXO4iqXYaQoN8HcbxiiqwBeFywbsCsO5HYo3x0VsfGnP0uelMSIvMDJmaY7/qDUEBjD50zuv8p4Xuq46PqQ6B5VM8liq/nJ14ggHOx0StdtenThP143xOed05lAdEtZOHeVc189HuV7ZSApHtXruGlSLwcwNly+h9wdvjBd62FaNoVlpleQ/gnQdFLbZBcYWbmA4zCtwLmvE5MTEfysL+YiiwHTDwZVUQOkvfVI/zePSx5LLA44zkVgUH1mp4DOrudVSBbczej9F3G5wOS19Ht16l5assg37FT41/Hurk2g5F6C98CKTVLIUd/D/tXYguhkKSDk92YqRtGJl0SfOzOoRnDa0vGmOYxfWZ+33buXZ8Oqt7S6sbRyozsa3c=
+    bucket: parabot
+    skip_cleanup: true
+    local-dir: "./target/final/"
+    upload-dir: "artifacts/dreamscape-provider"
+    region: us-west-1
+    detect_encoding: true
+    acl: public_read
+    on:
+      repo: Parabot/Parabot-317-API-Minified-Dreamscape
+      branch:
+        - master
+        - development
+      jdk: 'oraclejdk7'
