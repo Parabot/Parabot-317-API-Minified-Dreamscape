@@ -8,7 +8,6 @@ import org.parabot.core.asm.adapters.AddInterfaceAdapter;
 import org.parabot.core.asm.hooks.HookFile;
 import org.parabot.core.desc.ServerProviderInfo;
 import org.parabot.core.reflect.RefClass;
-import org.parabot.core.reflect.RefField;
 import org.parabot.core.ui.BotUI;
 import org.parabot.core.ui.components.VerboseLoader;
 import org.parabot.environment.api.utils.WebUtil;
@@ -39,18 +38,18 @@ public class Loader extends ServerProvider {
     @Override
     public Applet fetchApplet() {
         try {
-            final Context context = Context.getInstance();
+            final Context        context     = Context.getInstance();
             final ASMClassLoader classLoader = context.getASMClassLoader();
-            final Class<?> clientClass = classLoader.loadClass(Context.getInstance().getServerProviderInfo().getClientClass());
-            final Object instance = clientClass.newInstance();
-            BotUI.getInstance().setSize(765,503);
+            final Class<?>       clientClass = classLoader.loadClass(Context.getInstance().getServerProviderInfo().getClientClass());
+            final Object         instance    = clientClass.newInstance();
+            BotUI.getInstance().setSize(765, 503);
             RefClass c = null;
             try {
                 c = new RefClass(classLoader.loadClass("com/dreamscape/y"));
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
- //           for (RefField ref : c.)
+            //           for (RefField ref : c.)
             c.getField("a").set((JFrame) BotUI.getInstance());
             new RefClass(classLoader.loadClass("com/dreamscape/aK")).getField("j").set(2.0D);
             System.err.println(c.getSuperclass().getField("a").asObject());
