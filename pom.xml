@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.parabot</groupId>
-    <artifactId>317-api-minified</artifactId>
+    <artifactId>317-api-minified-dreamscape</artifactId>
     <version>1.21.0</version>
-    <name>Parabot 317-API-Minified</name>
+    <name>Parabot 317-API-Minified Dreamscape</name>
 
     <licenses>
         <license>
