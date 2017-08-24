@@ -23,9 +23,9 @@ public class Menu {
      */
     public static void interact(SceneObject object, SceneObjects.Option action) {
         if (Game.hasAction4()) {
-            sendAction(action.getActionId(), object.getHash(), object.getLocalRegionX(), object.getLocalRegionY(), object.getId(), 0);
+            sendAction(action.getActionId(), object.getId(), object.getLocalRegionX(), object.getLocalRegionY(), object.getId(), 0);
         } else {
-            sendAction(action.getActionId(), object.getHash(), object.getLocalRegionX(), object.getLocalRegionY());
+            sendAction(action.getActionId(), object.getId(), object.getLocalRegionX(), object.getLocalRegionY());
         }
     }
 
@@ -57,9 +57,9 @@ public class Menu {
                 break;
         }
         if (Game.hasAction4()) {
-            sendAction(actionId, object.getHash(), object.getLocalRegionX(), object.getLocalRegionY(), object.getId(), 0);
+            sendAction(actionId, object.getId(), object.getLocalRegionX(), object.getLocalRegionY(), object.getId(), 0);
         } else {
-            sendAction(actionId, object.getHash(), object.getLocalRegionX(), object.getLocalRegionY());
+            sendAction(actionId, object.getId(), object.getLocalRegionX(), object.getLocalRegionY());
         }
     }
 
