@@ -27,7 +27,7 @@ import java.net.URL;
 /**
  * @author Everel, JKetelaar
  */
-@ServerManifest(author = "Everel & JKetelaar", name = "Server name here", type = Type.INJECTION, version = 2.1)
+@ServerManifest(author = "Everel & JKetelaar", name = "Server name here", type = Type.INJECTION, version = 0.2)
 public class Loader extends ServerProvider {
     private boolean extended = true;
 
@@ -49,11 +49,8 @@ public class Loader extends ServerProvider {
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-            //           for (RefField ref : c.)
             c.getField("a").set((JFrame) BotUI.getInstance());
             new RefClass(classLoader.loadClass("com/dreamscape/aK")).getField("j").set(2.0D);
-            System.err.println(c.getSuperclass().getField("a").asObject());
-            System.err.println("Parabot is cool (not)");
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
