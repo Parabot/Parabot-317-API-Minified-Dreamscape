@@ -11,11 +11,13 @@ public final class MessageEvent {
     private int    type;
     private String name;
     private String message;
+    private String title;
 
-    public MessageEvent(final int type, String name, String msg) {
+    public MessageEvent(final int type, String name, String msg, String title) {
         this.type = type;
         this.name = name;
         this.message = msg;
+        this.title = title;
     }
 
     public final String getMessage() {
@@ -28,5 +30,9 @@ public final class MessageEvent {
 
     public final String getSender() {
         return name;
+    }
+
+    public String getTitle() {
+        return title;
     }
 }
