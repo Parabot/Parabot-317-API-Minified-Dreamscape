@@ -13,6 +13,12 @@ public final class MessageEvent {
     private String message;
     private String title;
 
+    public MessageEvent(final int type, String name, String msg) {
+        this.type = type;
+        this.name = name;
+        this.message = msg;
+    }
+
     public MessageEvent(final int type, String name, String msg, String title) {
         this.type = type;
         this.name = name;
