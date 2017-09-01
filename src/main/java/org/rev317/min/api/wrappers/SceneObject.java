@@ -31,7 +31,7 @@ public class SceneObject implements Locatable {
      *
      * @return hash
      */
-    public final int getHash() {
+    public final long getHash() {
         return accessor.getHash();
     }
 
@@ -50,7 +50,7 @@ public class SceneObject implements Locatable {
      * @return region X
      */
     public final int getLocalRegionX() {
-        return accessor.getHash() & 0x7f;
+        return (int) (accessor.getHash() & 0x7f);
     }
 
     /**
@@ -59,7 +59,7 @@ public class SceneObject implements Locatable {
      * @return region Y
      */
     public final int getLocalRegionY() {
-        return accessor.getHash() >> 7 & 0x7f;
+        return (int) (accessor.getHash() >> 7 & 0x7f);
     }
 
     /**
@@ -68,7 +68,7 @@ public class SceneObject implements Locatable {
      * @return object id
      */
     public final int getId() {
-        return accessor.getHash() >> 14 & 0x7FFF;
+        return (int) (accessor.getHash() >> 14 & 0x7FFF);
     }
 
     /**
