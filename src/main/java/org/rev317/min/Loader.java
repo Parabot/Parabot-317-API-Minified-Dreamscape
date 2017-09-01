@@ -43,13 +43,7 @@ public class Loader extends ServerProvider {
             final Class<?>       clientClass = classLoader.loadClass(Context.getInstance().getServerProviderInfo().getClientClass());
             final Object         instance    = clientClass.newInstance();
             BotUI.getInstance().setSize(765, 503);
-            RefClass c = null;
-            try {
-                c = new RefClass(classLoader.loadClass("com/dreamscape/GameFrame"));
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-            c.getField("frame").set(BotUI.getInstance());
+            new RefClass(classLoader.loadClass("com/dreamscape/GameFrame")).getField("frame").set((JFrame) BotUI.getInstance());
             new RefClass(classLoader.loadClass("com/dreamscape/UserOptions")).getField("scale").set(2.0D);
             try {
                 Thread.sleep(1000);
