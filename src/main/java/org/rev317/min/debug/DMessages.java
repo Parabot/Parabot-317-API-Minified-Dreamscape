@@ -17,7 +17,6 @@ public class DMessages extends AbstractDebugger implements MessageListener {
 
     private String message;
     private String sender;
-    private String title;
     private int    type;
 
     @Override
@@ -40,7 +39,6 @@ public class DMessages extends AbstractDebugger implements MessageListener {
         PaintDebugger p = Context.getInstance().getPaintDebugger();
         p.addLine("Message: " + message);
         p.addLine("Sender: " + sender);
-        p.addLine("Title: " + title);
         p.addLine("Type: " + type);
     }
 
@@ -48,8 +46,7 @@ public class DMessages extends AbstractDebugger implements MessageListener {
     public void messageReceived(MessageEvent event) {
         message = event.getMessage();
         sender = event.getSender();
-        title = event.getTitle();
         type = event.getType();
-        System.out.printf("\"%s\" from \"%s\" with title \"%s\" and type %d\n", message, sender, title, type);
+        System.out.printf("\"%s\" from \"%s\" and type %d\n", message, sender, type);
     }
 }
