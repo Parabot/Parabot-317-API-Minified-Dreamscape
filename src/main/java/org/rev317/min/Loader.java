@@ -27,7 +27,7 @@ import java.net.URL;
 /**
  * @author Everel, JKetelaar
  */
-@ServerManifest(author = "Everel & JKetelaar", name = "Server name here", type = Type.INJECTION, version = 0.2)
+@ServerManifest(author = "Everel & JKetelaar", name = "Server name here", type = Type.INJECTION, version = 0.3)
 public class Loader extends ServerProvider {
     private boolean extended = true;
 
@@ -44,11 +44,11 @@ public class Loader extends ServerProvider {
             final Object         instance    = clientClass.newInstance();
             BotUI.getInstance().setSize(765, 503);
             try {
-                RefClass gameFrame = new RefClass(classLoader.loadClass("com/dreamscape/y"));
+                RefClass gameFrame = new RefClass(classLoader.loadClass("com/dreamscape/w"));
                 gameFrame.getField("a").set((JFrame) BotUI.getInstance());
-                gameFrame.getField("aA").setBoolean(true);
+                gameFrame.getField("as").setBoolean(true);
 
-                new RefClass(classLoader.loadClass("com/dreamscape/aK")).getField("j").set(2.0D);
+                new RefClass(classLoader.loadClass("com/dreamscape/aB")).getField("i").set(2.0D);
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -64,7 +64,7 @@ public class Loader extends ServerProvider {
             return null;
         }
     }
-
+    
     @Override
     public URL getJar() {
         ServerProviderInfo serverProvider = Context.getInstance().getServerProviderInfo();
