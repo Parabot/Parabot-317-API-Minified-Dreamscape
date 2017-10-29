@@ -27,7 +27,7 @@ import java.net.URL;
 /**
  * @author Everel, JKetelaar
  */
-@ServerManifest(author = "Everel & JKetelaar", name = "Server name here", type = Type.INJECTION, version = 0.2)
+@ServerManifest(author = "Everel & JKetelaar", name = "Server name here", type = Type.INJECTION, version = 0.3)
 public class Loader extends ServerProvider {
     private boolean extended = true;
 
