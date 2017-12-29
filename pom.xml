@@ -21,6 +21,7 @@
         <jdk.version>1.7</jdk.version>
         <build.version></build.version>
         <additionalparam>-Xdoclint:none</additionalparam>
+        <final.version>${version}-${build.version}</final.version>
     </properties>
 
     <repositories>
@@ -86,8 +87,7 @@
                         </goals>
                         <configuration>
                             <shadedArtifactAttached>true</shadedArtifactAttached>
-                            <shadedClassifierName>${project.build.finalName}</shadedClassifierName>
-                            <finalName></finalName>
+                            <finalName>DreamScape-Provider-V${final.version}</finalName>
                         </configuration>
                     </execution>
                 </executions>
