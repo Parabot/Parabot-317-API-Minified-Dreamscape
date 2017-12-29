@@ -6,7 +6,7 @@
 
     <groupId>org.parabot.servers</groupId>
     <artifactId>317-api-minified-dreamscape</artifactId>
-    <version>0.2.10</version>
+    <version>2.0</version>
     <name>Parabot 317-API-Minified Dreamscape</name>
 
     <licenses>
@@ -26,8 +26,8 @@
     <repositories>
         <repository>
             <id>parabot-maven</id>
-            <name>Parabot its Maven Repository</name>
-            <url>http://maven.parabot.org/</url>
+            <name>Maven Parabot</name>
+            <url>https://maven.parabot.org/</url>
         </repository>
     </repositories>
 
@@ -35,7 +35,7 @@
         <dependency>
             <groupId>org.parabot</groupId>
             <artifactId>client</artifactId>
-            <version>2.6.1</version>
+            <version>2.6.4</version>
             <exclusions>
                 <exclusion>
                     <artifactId>*</artifactId>
@@ -46,8 +46,13 @@
         </dependency>
         <dependency>
             <groupId>org.parabot</groupId>
+            <artifactId>317-api-minified</artifactId>
+            <version>1.202</version>
+        </dependency>
+        <dependency>
+            <groupId>org.parabot</groupId>
             <artifactId>internal-api</artifactId>
-            <version>1.4.45</version>
+            <version>1.51.2</version>
         </dependency>
     </dependencies>
 
@@ -66,24 +71,24 @@
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.5.3</version>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.1.0</version>
                 <configuration>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
                     <outputDirectory>${project.build.directory}/final/</outputDirectory>
-                    <appendAssemblyId>false</appendAssemblyId>
                 </configuration>
 
                 <executions>
                     <execution>
                         <id>make-assembly</id>
-                        <!-- bind to the packaging phase -->
                         <phase>package</phase>
                         <goals>
-                            <goal>single</goal>
+                            <goal>shade</goal>
                         </goals>
+                        <configuration>
+                            <shadedArtifactAttached>true</shadedArtifactAttached>
+                            <shadedClassifierName>${project.build.finalName}</shadedClassifierName>
+                            <finalName></finalName>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
