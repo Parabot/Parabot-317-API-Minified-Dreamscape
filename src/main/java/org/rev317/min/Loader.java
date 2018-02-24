@@ -48,7 +48,7 @@ public class Loader extends ServerProvider {
                 gameFrame.getField("a").set((JFrame) BotUI.getInstance());
                 gameFrame.getField("at").setBoolean(true);
 
-                new RefClass(classLoader.loadClass("com/dreamscape/aE")).getField("i").set(2.0D);
+                new RefClass(classLoader.loadClass("com/dreamscape/aH")).getField("i").set(2.0D);
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
