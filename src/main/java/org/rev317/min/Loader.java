@@ -44,11 +44,11 @@ public class Loader extends ServerProvider {
             final Object         instance    = clientClass.newInstance();
             BotUI.getInstance().setSize(765, 503);
             try {
-                RefClass gameFrame = new RefClass(classLoader.loadClass("com/dreamscape/w"));
+                RefClass gameFrame = new RefClass(classLoader.loadClass("com/dreamscape/s"));
                 gameFrame.getField("a").set((JFrame) BotUI.getInstance());
-                gameFrame.getField("at").setBoolean(true);
+                gameFrame.getField("aC").setBoolean(true);
 
-                new RefClass(classLoader.loadClass("com/dreamscape/aH")).getField("i").set(2.0D);
+                new RefClass(classLoader.loadClass("com/dreamscape/aE")).getField("i").set(2.0D);
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -64,7 +64,6 @@ public class Loader extends ServerProvider {
             return null;
         }
     }
-    
     @Override
     public URL getJar() {
         ServerProviderInfo serverProvider = Context.getInstance().getServerProviderInfo();
