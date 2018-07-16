@@ -45,7 +45,7 @@ public class Loader extends ServerProvider {
             BotUI.getInstance().setSize(765, 503);
             try {
                 RefClass gameFrame = new RefClass(classLoader.loadClass("com/dreamscape/GameFrame"));
-                gameFrame.getField("frame").set((JFrame) BotUI.getInstance());
+                gameFrame.getField("frame").set(BotUI.getInstance());
                 gameFrame.getField("usingLauncher").setBoolean(true);
 
                 new RefClass(classLoader.loadClass("com/dreamscape/UserOptions")).getField("scale").set(2.0D);
