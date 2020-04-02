@@ -29,7 +29,7 @@ notifications:
 
 env:
   global:
-    - PROVIDER_VERSION=2.0.12
+    - PROVIDER_VERSION=2.0.13
 
 cache:
   directories:
